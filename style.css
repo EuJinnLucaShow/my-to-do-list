@@ -1,5 +1,6 @@
 body {
-  margin: 0;
+  margin-left: 20px;
+  margin-right: 20px;
   min-width: 250px;
 }
 
@@ -71,13 +72,13 @@ ul li.checked::before {
 }
 
 .close:hover {
-  background-color: #f44336;
+  background-color: #65a2a3;
   color: white;
 }
 
 /* Style the header */
 .header {
-  background-color: #f44336;
+  background-color: #70a3a3;
   padding: 30px 40px;
   color: white;
   text-align: center;
@@ -92,27 +93,25 @@ ul li.checked::before {
 
 /* Style the input */
 input {
-  margin: 0;
   border: none;
-  border-radius: 0;
-  width: 75%;
+  border-radius: 50px;
+  width: 30%;
   padding: 10px;
-  float: left;
   font-size: 16px;
 }
 
 /* Style the "Add" button */
 .addBtn {
+  display: inline-block;
   padding: 10px;
-  width: 25%;
+  width: 10%;
   background: #d9d9d9;
   color: #555;
-  float: left;
   text-align: center;
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
-  border-radius: 0;
+  border-radius: 50px;
 }
 
 .addBtn:hover {

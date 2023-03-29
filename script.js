@@ -1,5 +1,5 @@
 // Create a "close" button and append it to each list item
-const myNodelist = document.getElementsByTagName("li");
+const myNodelist = document.getElementsByTagName("LI");
 for (let i = 0; i < myNodelist.length; i++) {
   const span = document.createElement("SPAN");
   const txt = document.createTextNode("\u00D7");
@@ -8,22 +8,26 @@ for (let i = 0; i < myNodelist.length; i++) {
   myNodelist[i].appendChild(span);
 }
 
-// Click on a close button to hide the current list item
-const close = document.querySelectorAll(".close");
+// Click on a close button to remove the current list item
+const close = document.getElementsByClassName("close");
 for (let i = 0; i < close.length; i++) {
-  close[i].addEventListener("click", function () {
+  close[i].onclick = function () {
     const div = this.parentElement;
-    div.style.display = "none";
-  });
+    div.remove();
+  };
 }
 
 // Add a "checked" symbol when clicking on a list item
-const list = document.querySelector("ul");
-list.addEventListener("click", function (ev) {
-  if (ev.target.tagName === "LI") {
-    ev.target.classList.toggle("checked");
-  }
-});
+const list = document.getElementById("myUL");
+list.addEventListener(
+  "click",
+  function (ev) {
+    if (ev.target.tagName === "LI") {
+      ev.target.classList.toggle("checked");
+    }
+  },
+  false
+);
 
 // Create a new list item when clicking on the "Add" button
 const addBtn = document.querySelector(".addBtn");
@@ -34,12 +38,21 @@ addBtn.addEventListener("click", function () {
     return;
   }
   const li = document.createElement("li");
-  li.textContent = inputValue;
+  const t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  document.getElementById("myUL").appendChild(li);
+  document.getElementById("myInput").value = "";
+
   const span = document.createElement("SPAN");
   const txt = document.createTextNode("\u00D7");
   span.className = "close";
   span.appendChild(txt);
   li.appendChild(span);
-  list.appendChild(li);
-  document.getElementById("myInput").value = "";
+
+  for (let i = 0; i < close.length; i++) {
+    close[i].onclick = function () {
+      const div = this.parentElement;
+      div.remove();
+    };
+  }
 });
