@@ -33,12 +33,13 @@ list.addEventListener(
 const addBtn = document.querySelector(".addBtn");
 addBtn.addEventListener("click", function () {
   const inputValue = document.getElementById("myInput").value;
-  if (!inputValue) {
+  if (!inputValue.trim()) {
     alert("You must write something!");
     return;
   }
   const li = document.createElement("li");
   const t = document.createTextNode(inputValue);
+  li.className = "todo-list";
   li.appendChild(t);
   document.getElementById("myUL").appendChild(li);
   document.getElementById("myInput").value = "";
