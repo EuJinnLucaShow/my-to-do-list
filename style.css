@@ -44,20 +44,20 @@ ul li.checked {
 ul li.checked::before {
   content: "";
   position: absolute;
+  top: 23px;
+  left: 7px;
   border-color: #888;
   border-style: solid;
   border-width: 0 2px 2px 0;
-  top: 10px;
-  left: 16px;
   transform: rotate(45deg);
-  height: 15px;
-  width: 7px;
+  height: 10px;
+  width: 5px;
 }
 
 .close {
   position: absolute;
   right: 10px;
-  top: 10px;
+  top: 15px;
   color: #ccc;
   font-size: 28px;
   font-weight: bold;
@@ -109,24 +109,13 @@ ul li.checked::before {
 
 .todo-list {
   max-width: 90%;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 5px auto;
+  padding: 20px 20px 20px 20px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
-}
-
-.todo-list::before {
-  content: "";
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  background-color: rgba(0, 0, 0, 0.05);
-  z-index: -1;
 }
 
 .todo-list::after {
