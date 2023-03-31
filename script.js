@@ -40,36 +40,36 @@ list.addEventListener(
   false
 );
 
+function createLi(text, isDone, id) {
+  const li = document.createElement("li");
+  const t = document.createTextNode(text);
+  li.className = "todo-list";
+  li.dataset.id = id;
+  if (isDone) li.classList.add("checked");
+  li.appendChild(t);
+  document.getElementById("myUL").appendChild(li);
+  document.getElementById("myInput").value = "";
+
+  const span = document.createElement("SPAN");
+  const txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+}
+
 // Create a new list item when clicking on the "Add" button
 const addBtn = document.querySelector(".addBtn");
-addBtn.addEventListener(
-  "click",
-  function (text, isDone = false, id = currentId) {
-    const inputValue = document.getElementById("myInput").value;
-    if (!inputValue.trim()) {
-      alert("You must write something!");
-      return;
-    }
-    addTaskToStorage(inputValue);
-    const li = document.createElement("li");
-    const t = document.createTextNode(inputValue);
-    li.className = "todo-list";
-    li.dataset.id = id;
-    if (isDone) li.classList.add("checked");
-    li.appendChild(t);
-    document.getElementById("myUL").appendChild(li);
-    document.getElementById("myInput").value = "";
-
-    const span = document.createElement("SPAN");
-    const txt = document.createTextNode("\u00D7");
-    span.className = "close";
-    span.appendChild(txt);
-    li.appendChild(span);
+addBtn.addEventListener("click", function (text, isDone, id) {
+  const inputValue = document.getElementById("myInput").value;
+  if (!inputValue.trim()) {
+    alert("You must write something!");
+    return;
   }
-);
+  addTaskToStorage(inputValue);
+  createLi((text = inputValue), (isDone = false), id);
+});
 
 // localStorage
-
 function createTaskObj(text, isDone) {
   return {
     text,
@@ -88,23 +88,6 @@ function addTaskToStorage(text, isDone = false) {
     save(STORAGE_KEY, currentState);
   }
   currentId += 1;
-}
-
-function createLi(text, isDone, id) {
-  const li = document.createElement("li");
-  const t = document.createTextNode(text);
-  li.className = "todo-list";
-  li.dataset.id = id;
-  if (isDone) li.classList.add("checked");
-  li.appendChild(t);
-  document.getElementById("myUL").appendChild(li);
-  document.getElementById("myInput").value = "";
-
-  const span = document.createElement("SPAN");
-  const txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
 }
 
 // Fill task list with data from local storage
