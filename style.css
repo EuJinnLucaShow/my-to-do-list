@@ -54,7 +54,7 @@ ul li.checked::before {
   position: absolute;
   top: 23px;
   left: 7px;
-  border-color: #888;
+  border-color: #65a2a3;
   border-style: solid;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
